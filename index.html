@@ -404,7 +404,11 @@ async function tickWithWA(){
   if(cfg.opt5&&min<=5&&min>4){fireWA('5m','5 MENIT LAGI RILIS!\n'+next.title+'\nJadwal: '+dtStr+'\n\nSIAGA 2: JANGAN ENTRY DULU! Sinyal BUY atau SELL baru keluar saat Actual rilis (1 pilihan jelas). Tunggu notif RILIS berikutnya.\nHarga: $'+price);}
   if(cfg.optRilis&&diff<=0&&diff>-60000){
     const action=document.getElementById('signalAction').textContent,entry=document.getElementById('entryVal').textContent,sl=document.getElementById('slVal').textContent,tp=document.getElementById('tpVal').textContent,tp2=document.getElementById('tpVal2').textContent,fundTxt=document.getElementById('fundReason').textContent;
-    fireWA('rilis','SINYAL FINAL - PILIH SATU\n'+next.title+'\nActual: '+(next.actual||document.getElementById('sActual').textContent)+' | Forecast '+next.forecast+' | Prev '+next.previous+'\n\nSINYAL: '+action+'\nFundamental: '+fundTxt+'\nEntry: '+entry+' | SL: '+sl+' | TP: '+tp+' ('+tp2+')\n\n'+document.getElementById('signalNarrative').innerText.slice(0,220));
+    const rsi=document.getElementById('rsiVal').textContent, techTxt=document.getElementById('techReason').textContent;
+    const isBuy=action==='BUY';
+    const alasanFund = isBuy ? 'FUNDAMENTAL: Actual < Forecast = USD melemah = Gold naik (data lemah = dovish).' : 'FUNDAMENTAL: Actual > Forecast = USD menguat = Gold tertekan (data kuat = hawkish).';
+    const alasanTek = 'TEKNIKAL: RSI '+rsi+' - '+techTxt+' | MA50/200 '+(document.getElementById('maVal')?.textContent||'Golden Cross');
+    fireWA('rilis','SINYAL FINAL - PILIH SATU\n'+next.title+'\nActual: '+(next.actual||document.getElementById('sActual').textContent)+' | Forecast '+next.forecast+' | Prev '+next.previous+'\n\nSINYAL: '+action+' (hanya 1 pilihan)\n'+alasanFund+'\n'+alasanTek+'\n\nEntry: '+entry+' | SL: '+sl+' | TP: '+tp+' ('+tp2+')\nRisk 1-2% | Spread melebar - tunggu 1-3 menit konfirmasi.\n\nBuka web: https://xauusd-signal-pro.vercel.app');
   }
 }
 let tickInterval=setInterval(tickWithWA,1000);
