@@ -1,10 +1,4 @@
 {
   "version": 2,
-  "functions": {
-    "api/*.js": { "runtime": "@vercel/node@3.0.0" }
-  },
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
-  "crons": [
-    { "path": "/api/cron-news", "schedule": "*/5 * * * *" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
