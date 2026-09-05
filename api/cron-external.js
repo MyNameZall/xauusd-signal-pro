@@ -16,9 +16,9 @@ export default async function handler(req, res) {
     const t=new Date(n.time).getTime();
     const diffMin=(t-now)/60000;
     let msg=null,tag=null;
-    if(diffMin>59 && diffMin<=60){tag='60m';msg=`60 MENIT MENUJU NEWS GOLD\n${n.title}\nJadwal: ${new Date(n.time).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})} WIB\nForecast ${n.forecast} vs Previous ${n.previous}\n\nSIAGA 1: Kecilkan lot.\nhttps://${req.headers.host}`;}
-    else if(diffMin>4 && diffMin<=5){tag='5m';msg=`5 MENIT LAGI RILIS!\n${n.title}\n\nSIAGA 2: JANGAN ENTRY DULU! Sinyal BUY atau SELL (1 pilihan) baru keluar saat RILIS. Tunggu notif berikutnya.`;}
-    else if(diffMin>-1 && diffMin<=0){tag='rilis';msg=`SINYAL FINAL - CEK WEB + ALASAN\n${n.title}\nForecast ${n.forecast} | Prev ${n.previous}\n\nSinyal hanya 1: BUY atau SELL (tidak dua-duanya).\nALASAN FUNDAMENTAL: Data lemah USD = BUY Gold (dovish), kuat = SELL (hawkish).\nALASAN TEKNIKAL: RSI/MA/Support-Resistance di web jadi konfirmasi - konfluensi = akurasi tinggi.\n\nEntry/SL/TP + rangkuman lengkap di web:\nhttps://${req.headers.host}`;}
+    if(diffMin>59 && diffMin<=60){tag='60m';msg=`XAUUSD - 60 Menit Menuju Rilis\n${n.title}\nJadwal: ${new Date(n.time).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})} WIB\nForecast ${n.forecast} | Previous ${n.previous}\nSiaga 1: Kurangi eksposur, spread berpotensi melebar.\nhttps://${req.headers.host}`;}
+    else if(diffMin>4 && diffMin<=5){tag='5m';msg=`XAUUSD - 5 Menit Menuju Rilis\n${n.title}\nSiaga 2: Tahan posisi. Sinyal akan dirilis setelah data Actual keluar.`;}
+    else if(diffMin>-1 && diffMin<=0){tag='rilis';msg=`XAUUSD - Sinyal\n${n.title}\nForecast ${n.forecast} | Previous ${n.previous}\n\nSinyal dan detail entry akan tersedia di website setelah data Actual dirilis.\nFundamental: Actual di bawah ekspektasi cenderung melemahkan USD (mendukung Gold), di atas ekspektasi sebaliknya.\nTeknikal: RSI, MA, dan area Support-Resistance menjadi konfirmasi.\nhttps://${req.headers.host}`;}
     if(msg) for(const cid of chatIds){
       try{const r=await fetch(`https://api.telegram.org/bot${token}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:cid,text:msg})});const j=await r.json();sent.push({news:n.title,tag,ok:j.ok});}catch(e){sent.push({news:n.title,tag,ok:false})}
     }
