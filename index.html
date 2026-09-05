@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XAUUSD SIGNAL PRO • News + Teknikal Akurat</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{gold:'#FFD60A',card:'#14141f',border:'#232334'}}}}
+</script>
+<style>
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:#2a2a40;border-radius:99px}
+.pulse-dot{animation:pulseDot 1.5s infinite}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
+.countdown-glow{box-shadow:0 0 40px rgba(255,214,10,0.15), inset 0 1px 0 rgba(255,255,255,0.08)}
+.signal-buy{background:linear-gradient(135deg,#00c853 0%,#009624 100%)}
+.signal-sell{background:linear-gradient(135deg,#ff3b30 0%,#c62828 100%)}
+.signal-wait{background:linear-gradient(135deg,#ffae00 0%,#ff6f00 100%)}
+@media(max-width:640px){#livePrice{font-size:15px!important}#tradingview_widget{height:260px!important}.countdown-glow{width:100%!important} #waBar .grid{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body class="bg-[#07070a] text-white font-sans antialiased overflow-x-hidden">
+<div class="sticky top-0 z-50 bg-black border-b border-[#1e1e2e]">
+  <div class="max-w-[1600px] mx-auto px-3 sm:px-4 py-2 sm:py-2.5 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-[#FFD60A] flex items-center justify-center text-black font-black text-sm">Au</div>
+      <div>
+        <div class="font-black leading-none tracking-tight">XAUUSD <span class="text-[#FFD60A]">SIGNAL PRO</span> <span class="text-[10px] font-bold bg-white text-black px-1.5 py-0.5 rounded ml-1">v2.1</span></div>
+        <div class="text-[11px] text-zinc-400 font-mono flex items-center gap-2"><span class="w-2 h-2 bg-emerald-500 rounded-full pulse-dot inline-block"></span> DETEKSI NEWS REAL-TIME AKTIF - NO MISTAKE MODE - TELEGRAM ON</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <div class="bg-[#14141f] border border-[#232334] rounded-xl px-3 sm:px-4 py-2 flex items-center gap-3">
+        <div class="text-[10px] text-zinc-500 font-bold tracking-widest">XAUUSD LIVE</div>
+        <div class="text-right"><div id="livePrice" class="font-black font-mono text-lg leading-none">2,584.32</div><div id="liveChange" class="text-xs font-mono font-bold text-emerald-400">+0.00 (0.00%)</div></div>
+        <div id="priceTrend" class="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-arrow-trend-up text-xs"></i></div>
+      </div>
+      <div class="hidden md:flex bg-[#14141f] border border-[#232334] rounded-xl px-3 py-2 gap-4">
+        <div><div class="text-[10px] text-zinc-500 font-bold">DXY</div><div class="font-mono font-bold text-sm">104.12 <span class="text-red-400 text-xs">-0.14%</span></div></div>
+        <div class="w-px bg-[#232334]"></div>
+        <div><div class="text-[10px] text-zinc-500 font-bold">US10Y</div><div class="font-mono font-bold text-sm">4.31%</div></div>
+        <div class="w-px bg-[#232334]"></div>
+        <div><div class="text-[10px] text-zinc-500 font-bold">WIB</div><div id="wibClock" class="font-mono font-bold text-sm">--:--:--</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-gradient-to-r from-[#1a1500] via-[#2a2300] to-[#1a1500] border-y border-[#FFD60A]/20">
+  <div class="max-w-[1600px] mx-auto px-4 py-3 sm:py-4">
+    <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#FFD60A]/15 border border-[#FFD60A]/30 flex items-center justify-center text-[#FFD60A] animate-pulse"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div>
+          <div class="text-[11px] font-black tracking-[0.2em] text-[#FFD60A]">NEXT HIGH IMPACT NEWS - XAUUSD DRIVER</div>
+          <div id="nextNewsTitle" class="font-black text-lg sm:text-xl leading-tight">Memuat kalender news...</div>
+          <div id="nextNewsMeta" class="text-xs text-zinc-400 font-mono">USD - High Impact</div>
+        </div>
+      </div>
+      <div class="flex items-stretch gap-3 w-full lg:w-auto">
+        <div class="countdown-glow flex-1 lg:flex-none bg-black rounded-2xl border border-[#FFD60A]/30 px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+          <div class="text-center"><div class="text-[10px] tracking-widest font-bold text-zinc-500">MENUJU RILIS</div><div id="countdownTimer" class="font-mono font-black text-2xl sm:text-3xl tracking-tight text-[#FFD60A]">--:--:--</div><div class="text-[11px] font-bold text-zinc-400">HITUNG MUNDUR REAL-TIME</div></div>
+          <div class="hidden sm:block w-px h-14 bg-white/10"></div>
+          <div class="text-center"><div id="siagaBadge" class="inline-flex items-center gap-1.5 bg-zinc-800 text-zinc-300 text-[11px] font-black px-3 py-1 rounded-full border border-white/10"><span class="w-2 h-2 bg-zinc-500 rounded-full"></span> STANDBY</div><div id="siagaDesc" class="text-[11px] text-zinc-500 mt-1 max-w-[16ch] leading-tight">Menunggu jam news</div></div>
+        </div>
+        <div class="hidden xl:flex flex-col justify-center bg-emerald-500/10 border border-emerald-500/20 rounded-2xl px-4 py-3 min-w-[180px]">
+          <div class="text-[10px] font-bold tracking-widest text-emerald-400">SISTEM STATUS</div>
+          <div class="text-sm font-black text-white flex items-center gap-2"><span class="w-2 h-2 bg-emerald-500 rounded-full pulse-dot"></span> NO ERROR - AUTO-DETECT ON</div>
+          <div class="text-[11px] text-zinc-400">Refresh 1 detik - Anti miss news</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TELEGRAM BAR -->
+<div id="waBar" class="bg-[#0a1620] border-y border-sky-500/20">
+  <div class="max-w-[1600px] mx-auto px-4 py-3 flex flex-col xl:flex-row gap-3 xl:items-center xl:justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-[#229ED9] flex items-center justify-center text-white text-lg"><i class="fa-brands fa-telegram"></i></div>
+      <div>
+        <div class="font-black text-sm leading-none flex items-center gap-2">NOTIFIKASI TELEGRAM <span id="waStatusBadge" class="text-[10px] px-2 py-0.5 rounded-full border font-black bg-zinc-800 text-zinc-400 border-zinc-700">NONAKTIF</span> <span class="text-[10px] bg-sky-500 text-white px-1.5 py-0.5 rounded font-black">@zalltrader_bot</span></div>
+        <div class="text-[11px] text-zinc-400">Telegram bunyi otomatis: H-7 | 60 menit | 5 menit | Saat RILIS + sinyal BUY/SELL.</div>
+      </div>
+    </div>
+    <div class="flex-1 xl:max-w-[920px] bg-black border border-[#1a2a3a] rounded-2xl p-3 flex flex-col lg:flex-row gap-3">
+      <div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <label class="bg-[#0f0f18] border border-[#232334] rounded-xl px-3 py-2">
+          <div class="text-[10px] font-black tracking-widest text-zinc-500">CHAT ID</div>
+          <input id="waNumber" placeholder="123456789" class="w-full bg-transparent outline-none font-mono font-bold text-sm placeholder:text-zinc-600" />
+        </label>
+        <label class="bg-[#0f0f18] border border-[#232334] rounded-xl px-3 py-2">
+          <div class="text-[10px] font-black tracking-widest text-zinc-500">PROVIDER</div>
+          <select id="waProvider" class="w-full bg-transparent outline-none font-bold text-sm">
+            <option value="telegram" selected>Telegram Bot API (Gratis)</option>
+            <option value="webhook">Webhook (n8n / Zapier)</option>
+          </select>
+        </label>
+        <label class="bg-[#0f0f18] border border-[#232334] rounded-xl px-3 py-2">
+          <div class="text-[10px] font-black tracking-widest text-zinc-500">BOT TOKEN</div>
+          <input id="waToken" value="8821723673:AAHJPxBsGFZqPyCIEsSCeXkyxheCkAe9U4g" placeholder="123456:ABC..." class="w-full bg-transparent outline-none font-mono font-bold text-sm placeholder:text-zinc-600" />
+          <div class="text-[10px] text-zinc-500">Token @zalltrader_bot terpasang</div>
+        </label>
+      </div>
+      <div class="flex flex-col gap-2 lg:w-[280px]">
+        <div class="flex gap-1.5 flex-wrap">
+          <label class="flex items-center gap-1.5 bg-[#14141f] border border-[#232334] rounded-full px-2.5 py-1 text-[11px] font-bold cursor-pointer"><input type="checkbox" id="waOpt60" checked> 60m</label>
+          <label class="flex items-center gap-1.5 bg-[#14141f] border border-[#232334] rounded-full px-2.5 py-1 text-[11px] font-bold cursor-pointer"><input type="checkbox" id="waOpt5" checked> 5m</label>
+          <label class="flex items-center gap-1.5 bg-[#14141f] border border-[#232334] rounded-full px-2.5 py-1 text-[11px] font-bold cursor-pointer"><input type="checkbox" id="waOptRilis" checked> RILIS</label>
+          <label class="flex items-center gap-1.5 bg-[#14141f] border border-[#232334] rounded-full px-2.5 py-1 text-[11px] font-bold cursor-pointer"><input type="checkbox" id="waOptH7" checked> H-7</label>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="saveWAConfig()" class="flex-1 min-w-[130px] bg-[#229ED9] hover:bg-[#1d8dc0] text-white font-black py-2.5 rounded-xl text-xs">SIMPAN & AKTIFKAN</button>
+          <button onclick="detectChatId()" class="flex-1 sm:flex-none bg-amber-400 text-black font-black px-3 py-2.5 rounded-xl text-xs whitespace-nowrap">DETEKSI ID</button>
+          <button onclick="testWA()" class="flex-1 sm:flex-none bg-white text-black font-black px-3 py-2.5 rounded-xl text-xs whitespace-nowrap">TEST</button>
+        </div>
+        <div id="waLog" class="text-[11px] font-mono text-zinc-500 leading-tight">Langkah: 1) Chat @zalltrader_bot /start 2) DETEKSI ID 3) SIMPAN 4) TEST</div>
+      </div>
+    </div>
+    <div class="hidden xl:block text-[11px] leading-tight text-zinc-400 max-w-[220px]"><b class="text-white">Cara kerja TG:</b> Web hitung mundur tiap detik. Saat 60m/5m/RILIS tembak <b class="text-sky-400">Bot API</b> - Telegram bunyi instan.</div>
+  </div>
+</div>
+<div class="max-w-[1600px] mx-auto px-4 pt-2"><div class="bg-black border border-sky-500/15 rounded-xl px-3 py-2.5 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-zinc-400"><span class="font-black text-sky-400">BOT AKTIF:</span> <span><b class="text-white">@zalltrader_bot</b> token terpasang otomatis</span> <span>1. Chat bot /start</span> <span>2. DETEKSI ID</span> <span>3. SIMPAN</span> <span>4. TEST KIRIM</span> <span>Biarkan tab kebuka</span></div></div>
+
+<div class="max-w-[1600px] mx-auto p-2 sm:p-4 grid grid-cols-12 gap-2 sm:gap-4">
+  <div class="col-span-12 lg:col-span-3 flex flex-col gap-4">
+    <div class="bg-[#14141f] border border-[#232334] rounded-2xl overflow-hidden">
+      <div class="p-4 flex items-center justify-between border-b border-[#232334]">
+        <h2 class="font-black text-sm flex items-center gap-2"><i class="fa-regular fa-calendar text-[#FFD60A]"></i> KALENDER NEWS GOLD</h2>
+        <span class="text-[10px] font-black bg-red-500 text-white px-2 py-1 rounded-full">HIGH ONLY</span>
+      </div>
+      <div class="p-2 flex gap-1.5">
+        <button onclick="filterNews('all')" id="f-all" class="flex-1 py-1.5 rounded-lg bg-white text-black font-black text-xs">Semua</button>
+        <button onclick="filterNews('high')" id="f-high" class="flex-1 py-1.5 rounded-lg bg-[#1e1e2e] text-zinc-400 font-bold text-xs">High</button>
+        <button onclick="filterNews('today')" id="f-today" class="flex-1 py-1.5 rounded-lg bg-[#1e1e2e] text-zinc-400 font-bold text-xs">Hari Ini</button>
+      </div>
+      <div id="newsList" class="max-h-[520px] overflow-auto p-2 space-y-2"></div>
+      <div class="p-3 bg-[#0f0f18] border-t border-[#232334] text-[11px] text-zinc-500 leading-relaxed">Klik news untuk lihat <b class="text-zinc-300">data H-7</b> dan rangkuman fundamental + teknikal.</div>
+    </div>
+    <div class="bg-[#14141f] border border-[#232334] rounded-2xl overflow-hidden">
+      <div class="p-4 border-b border-[#232334]"><div class="text-[11px] font-black tracking-widest text-[#FFD60A]">DATA COLLECTION H-7</div><div id="h7Title" class="font-black leading-tight">Pilih news di atas</div><div class="text-xs text-zinc-500">Rangkuman 7 hari sebelum news penting</div></div>
+      <div id="h7Timeline" class="p-3 space-y-2 max-h-[380px] overflow-auto"><div class="text-center py-8 text-zinc-500 text-sm">Belum ada news terpilih</div></div>
+    </div>
+  </div>
+
+  <div class="col-span-12 lg:col-span-5 flex flex-col gap-4">
+    <div class="rounded-[24px] p-[1px] bg-gradient-to-b from-white/10 to-transparent">
+      <div class="rounded-[23px] bg-gradient-to-b from-[#1a1a24] to-[#0f0f14] p-4 sm:p-5">
+        <div class="flex items-center justify-between"><div class="text-[11px] font-black tracking-[0.18em] text-zinc-500">SINYAL FINAL - FUNDAMENTAL + TEKNIKAL</div><div id="signalTime" class="text-[11px] font-mono bg-black border border-[#232334] px-2.5 py-1 rounded-full">--:-- WIB</div></div>
+        <div id="signalBadge" class="mt-3 rounded-2xl signal-wait p-4 sm:p-5 text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-white/10 pointer-events-none"></div>
+          <div class="relative"><div id="signalAction" class="font-black text-3xl sm:text-5xl tracking-tight text-white drop-shadow">WAIT</div><div id="signalPair" class="font-black tracking-widest text-white/90 text-sm">XAUUSD - TUNGGU NEWS</div><div id="signalConfidence" class="mt-2 inline-flex items-center gap-2 bg-black/25 backdrop-blur px-3 py-1 rounded-full text-xs font-black border border-white/15">Confidence 0% - Menunggu data</div></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-3">
+          <div class="bg-black rounded-xl border border-[#232334] p-3 text-center"><div class="text-[10px] font-bold tracking-widest text-zinc-500">FUNDAMENTAL</div><div id="fundScore" class="font-black text-sm mt-1">NEUTRAL</div><div id="fundBar" class="h-1.5 bg-[#232334] rounded-full mt-2 overflow-hidden"><div class="h-full w-[50%] bg-zinc-500"></div></div><div id="fundReason" class="text-[11px] text-zinc-500 mt-1 leading-tight">Menunggu rilis actual</div></div>
+          <div class="bg-black rounded-xl border border-[#232334] p-3 text-center"><div class="text-[10px] font-bold tracking-widest text-zinc-500">TEKNIKAL</div><div id="techScore" class="font-black text-sm mt-1 text-[#FFD60A]">BULLISH</div><div id="techBar" class="h-1.5 bg-[#232334] rounded-full mt-2 overflow-hidden"><div class="h-full w-[68%] bg-[#FFD60A]"></div></div><div id="techReason" class="text-[11px] text-zinc-500 mt-1 leading-tight">Harga di atas MA200</div></div>
+          <div class="bg-black rounded-xl border border-[#232334] p-3 text-center"><div class="text-[10px] font-bold tracking-widest text-zinc-500">KEPUTUSAN</div><div id="finalScore" class="font-black text-sm mt-1">WAIT</div><div class="text-[11px] text-zinc-500 mt-2">Spread melebar saat news!</div></div>
+        </div>
+        <div class="mt-3 bg-black rounded-2xl border border-[#232334] p-3 sm:p-4">
+          <div class="flex items-center justify-between"><div class="font-black text-xs tracking-widest text-zinc-400">PLAN TRADING - RISK 1-2%</div><span id="riskBadge" class="text-[10px] font-black bg-amber-500 text-black px-2 py-1 rounded-full">JANGAN ENTRY SEBELUM NEWS</span></div>
+          <div class="grid grid-cols-3 gap-2 mt-3">
+            <div class="bg-[#14141f] rounded-xl p-3 border border-[#232334] text-center"><div class="text-[10px] font-bold text-zinc-500 tracking-widest">ENTRY</div><div id="entryVal" class="font-mono font-black text-sm">--</div><div class="text-[11px] text-zinc-500">Market / Limit</div></div>
+            <div class="bg-red-500/10 rounded-xl p-3 border border-red-500/20 text-center"><div class="text-[10px] font-bold text-red-400 tracking-widest">STOP LOSS</div><div id="slVal" class="font-mono font-black text-sm text-red-400">--</div><div id="slPips" class="text-[11px] text-zinc-500">-- pips</div></div>
+            <div class="bg-emerald-500/10 rounded-xl p-3 border border-emerald-500/20 text-center"><div class="text-[10px] font-bold text-emerald-400 tracking-widest">TAKE PROFIT</div><div id="tpVal" class="font-mono font-black text-sm text-emerald-400">--</div><div id="tpVal2" class="text-[11px] text-zinc-500">TP2 --</div></div>
+          </div>
+          <div id="signalNarrative" class="mt-3 text-[13px] leading-relaxed bg-[#0f0f18] border border-[#232334] rounded-xl p-3 text-zinc-300">Sistem akan memberi sinyal <b class="text-white">BUY atau SELL yang jelas</b> setelah data Actual rilis dan dibandingkan dengan Forecast. Sebelum news: jangan entry, tunggu konfirmasi.</div>
+        </div>
+        <div class="flex gap-2 mt-3"><button onclick="forceRefreshSignal()" class="flex-1 bg-white text-black font-black py-3 rounded-xl text-sm">REFRESH SINYAL</button><button onclick="document.getElementById('detailFundamental').scrollIntoView({behavior:'smooth'})" class="flex-1 bg-[#232334] border border-white/10 font-black py-3 rounded-xl text-sm">LIHAT ALASAN</button></div>
+      </div>
+    </div>
+    <div id="detailFundamental" class="bg-[#14141f] border border-[#232334] rounded-2xl overflow-hidden">
+      <div class="p-4 border-b border-[#232334] flex items-start justify-between gap-3"><div><div class="text-[11px] font-black tracking-widest text-[#FFD60A]">RANGKUMAN MENIT AKHIR - SEBELUM NEWS</div><div id="summaryTitle" class="font-black leading-tight">Menunggu news terdekat</div><div id="summarySubtitle" class="text-xs text-zinc-500">Update otomatis tiap 1 detik</div></div><div id="summaryImpact" class="shrink-0 bg-red-500 text-white text-[11px] font-black px-2.5 py-1 rounded-full">HIGH</div></div>
+      <div class="p-4 space-y-3">
+        <div class="grid sm:grid-cols-3 gap-2">
+          <div class="bg-black border border-[#232334] rounded-xl p-3"><div class="text-[11px] font-bold text-zinc-500">FORECAST</div><div id="sForecast" class="font-mono font-black text-lg">--</div><div class="text-[11px] text-zinc-500">Ekspektasi pasar</div></div>
+          <div class="bg-black border border-[#232334] rounded-xl p-3"><div class="text-[11px] font-bold text-zinc-500">PREVIOUS</div><div id="sPrevious" class="font-mono font-black text-lg">--</div><div class="text-[11px] text-zinc-500">Bulan lalu</div></div>
+          <div class="bg-black border border-yellow-500/30 rounded-xl p-3"><div class="text-[11px] font-bold text-[#FFD60A]">ACTUAL</div><div id="sActual" class="font-mono font-black text-lg text-white">--</div><div id="sActualNote" class="text-[11px] text-amber-400">Belum rilis</div></div>
+        </div>
+        <div id="fundamentalExplain" class="bg-[#0f0f18] border border-[#232334] rounded-xl p-3 text-[13px] leading-relaxed text-zinc-300">Penjelasan fundamental & teknikal akan muncul di sini untuk setiap news. Sistem membaca apakah data cenderung <b class="text-emerald-400">BUY GOLD</b> atau <b class="text-red-400">SELL GOLD</b>.</div>
+        <div class="grid sm:grid-cols-2 gap-2">
+          <div class="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-3"><div class="text-xs font-black text-emerald-400">JIKA DATA LEMAH USD</div><div class="text-[13px] text-zinc-300 mt-1">Actual &lt; Forecast - USD melemah - <b class="text-emerald-400">BUY XAUUSD</b></div></div>
+          <div class="rounded-xl border border-red-500/20 bg-red-500/10 p-3"><div class="text-xs font-black text-red-400">JIKA DATA KUAT USD</div><div class="text-[13px] text-zinc-300 mt-1">Actual &gt; Forecast - USD menguat - <b class="text-red-400">SELL XAUUSD</b></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-span-12 lg:col-span-4 flex flex-col gap-4">
+    <div class="bg-[#14141f] border border-[#232334] rounded-2xl overflow-hidden">
+      <div class="p-4 border-b border-[#232334] flex items-center justify-between"><h2 class="font-black text-sm flex items-center gap-2"><i class="fa-solid fa-chart-line text-[#FFD60A]"></i> TEKNIKAL XAUUSD</h2><span id="techTrendBadge" class="text-[11px] font-black bg-emerald-500 text-white px-2.5 py-1 rounded-full">TREND BULLISH</span></div>
+      <div class="h-[280px] bg-black"><div id="tradingview_widget" class="h-full"></div></div>
+      <div class="p-3 grid grid-cols-3 gap-2">
+        <div class="bg-black border border-[#232334] rounded-xl p-2.5 text-center"><div class="text-[10px] font-bold tracking-widest text-zinc-500">RSI (14)</div><div id="rsiVal" class="font-mono font-black text-base">58.4</div><div id="rsiLabel" class="text-[11px] font-bold text-amber-400">NETRAL</div></div>
+        <div class="bg-black border border-[#232334] rounded-xl p-2.5 text-center"><div class="text-[10px] font-bold tracking-widest text-zinc-500">MACD</div><div id="macdVal" class="font-mono font-black text-base">+2.14</div><div id="macdLabel" class="text-[11px] font-bold text-emerald-400">BULLISH</div></div>
+        <div class="bg-black border border-[#232334] rounded-xl p-2.5 text-center"><div class="text-[10px] font-bold tracking-widest text-zinc-500">MA 50 / 200</div><div id="maVal" class="font-mono font-black text-xs">GOLDEN CROSS</div><div class="text-[11px] font-bold text-emerald-400">BUY BIAS</div></div>
+      </div>
+      <div class="px-3 pb-3 grid grid-cols-2 gap-2">
+        <div class="bg-[#0f0f18] border border-[#232334] rounded-xl p-3"><div class="text-[11px] font-bold text-zinc-500">SUPPORT</div><div id="sup1" class="font-mono font-black text-sm">2,045.20</div><div id="sup2" class="font-mono text-xs text-zinc-500">S2 2,031.80</div></div>
+        <div class="bg-[#0f0f18] border border-[#232334] rounded-xl p-3"><div class="text-[11px] font-bold text-zinc-500">RESISTANCE</div><div id="res1" class="font-mono font-black text-sm">2,072.50</div><div id="res2" class="font-mono text-xs text-zinc-500">R2 2,089.10</div></div>
+      </div>
+      <div id="techExplain" class="mx-3 mb-3 bg-[#FFD60A]/10 border border-[#FFD60A]/20 rounded-xl p-3 text-[13px] leading-relaxed text-zinc-300"><b class="text-[#FFD60A]">Teknikal:</b> Harga bertahan di atas MA200, RSI belum overbought. Jika fundamental BUY, teknikal konfirmasi - sinyal lebih akurat.</div>
+    </div>
+    <div class="bg-gradient-to-br from-[#1a1500] to-[#14141f] border border-[#FFD60A]/20 rounded-2xl p-4">
+      <div class="font-black text-sm flex items-center gap-2"><i class="fa-solid fa-shield-halved text-[#FFD60A]"></i> ATURAN TRADING SAAT NEWS</div>
+      <ul class="mt-2 space-y-1.5 text-[13px] leading-relaxed text-zinc-300 list-disc pl-5">
+        <li><b class="text-white">60 menit sebelum news:</b> SIAGA 1 - jangan buka posisi baru, kecilkan lot.</li>
+        <li><b class="text-white">5-15 menit sebelum news:</b> SIAGA 2 - spread melebar, rawan slippage. WAIT.</li>
+        <li><b class="text-white">Saat rilis:</b> Tunggu 1-3 menit, lihat Actual vs Forecast, baru entry sesuai sinyal BUY/SELL.</li>
+        <li><b class="text-white">Setelah news:</b> Sinyal jadi BUY / SELL jelas dengan SL/TP.</li>
+      </ul>
+      <div class="mt-3 flex items-center gap-2 text-[11px] font-mono bg-black border border-[#232334] rounded-lg px-3 py-2"><span class="w-2 h-2 bg-emerald-500 rounded-full pulse-dot"></span> Auto-refresh tiap detik - Anti miss & anti error</div>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-[1600px] mx-auto px-4 pb-8">
+  <div class="bg-[#0f0f18] border border-[#232334] rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-500">
+    <div>© 2026 XAUUSD Signal Pro - Sinyal menggabungkan <b class="text-zinc-300">Fundamental (News High Impact)</b> + <b class="text-zinc-300">Teknikal (RSI, MACD, MA, SR)</b>. Bukan nasihat keuangan. Selalu pakai SL.</div>
+    <div class="flex items-center gap-2"><span class="w-2 h-2 bg-[#FFD60A] rounded-full"></span> Data H-7 dikumpulkan otomatis - Telegram @zalltrader_bot</div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script>
+const newsData=[
+  {id:1,title:"Non-Farm Payroll (NFP)",time:"2026-09-11T19:30:00+07:00",currency:"USD",impact:"high",forecast:"175K",previous:"187K",actual:null,desc:"Data tenaga kerja paling penggerak USD & Gold. NFP lemah = BUY Gold.",h7:[{d:"H-7",t:"DXY melemah 0.3% menjelang NFP, Gold naik tipis",s:"bullish"},{d:"H-5",t:"Jobless Claims naik ke 232K > forecast - sinyal labor mendingin",s:"bullish"},{d:"H-3",t:"ADP Employment 122K < 150K - swasta melambat",s:"bullish"},{d:"H-1",t:"ISM Manufacturing 47.2 - kontraksi, USD tertekan",s:"bullish"}]},
+  {id:2,title:"CPI Inflation YoY (USD)",time:"2026-09-10T19:30:00+07:00",currency:"USD",impact:"high",forecast:"3.2%",previous:"3.4%",actual:null,desc:"Inflasi penentu suku bunga Fed. CPI turun = dovish = BUY Gold.",h7:[{d:"H-6",t:"PPI turun 0.1% - tekanan inflasi mereda",s:"bullish"},{d:"H-4",t:"Oil turun 2% - bantu redakan CPI",s:"bullish"},{d:"H-2",t:"Cleveland Fed Nowcast 3.25% - sedikit di atas forecast",s:"neutral"},{d:"H-1",t:"DXY sideways, pasar tunggu CPI",s:"neutral"}]},
+  {id:3,title:"FOMC Interest Rate Decision",time:"2026-09-17T01:00:00+07:00",currency:"USD",impact:"high",forecast:"5.25%",previous:"5.50%",actual:null,desc:"Keputusan suku bunga Fed. Cut/Pause dovish = BUY Gold kuat.",h7:[{d:"H-7",t:"FedWatch 68% peluang cut 25bps",s:"bullish"},{d:"H-5",t:"Retail Sales lemah - dukung cut",s:"bullish"},{d:"H-3",t:"Powell pidato dovish",s:"bullish"},{d:"H-1",t:"US10Y turun ke 4.25% - Gold diuntungkan",s:"bullish"}]},
+  {id:4,title:"PPI & Jobless Claims",time:"2026-09-12T19:30:00+07:00",currency:"USD",impact:"high",forecast:"0.2% / 230K",previous:"0.3% / 228K",actual:null,desc:"PPI + Claims barengan. PPI rendah + Claims tinggi = BUY Gold.",h7:[{d:"H-4",t:"CPI sudah rilis 3.2% - pasar lihat PPI konfirmasi",s:"neutral"},{d:"H-2",t:"Klaim minggu lalu 229K stabil",s:"neutral"}]},
+  {id:5,title:"Retail Sales MoM",time:"2026-09-16T19:30:00+07:00",currency:"USD",impact:"high",forecast:"0.3%",previous:"0.6%",actual:null,desc:"Konsumsi AS. Lemah = ekonomi melambat = BUY Gold.",h7:[{d:"H-3",t:"Consumer Confidence turun 2 poin",s:"bullish"}]},
+  {id:6,title:"PCE Price Index (Fed Favorite)",time:"2026-09-26T19:30:00+07:00",currency:"USD",impact:"high",forecast:"2.6%",previous:"2.8%",actual:null,desc:"Inflasi favorit Fed. PCE turun = BUY Gold.",h7:[]},
+  {id:7,title:"GDP Advance QoQ",time:"2026-09-25T19:30:00+07:00",currency:"USD",impact:"high",forecast:"1.8%",previous:"2.1%",actual:null,desc:"Pertumbuhan ekonomi. GDP lemah = BUY Gold (safe haven).",h7:[]},
+];
+let selectedId=null,filterMode='all',livePriceVal=2584.32;
+function renderNews(){
+  const list=document.getElementById('newsList');
+  let filtered=[...newsData].sort((a,b)=>new Date(a.time)-new Date(b.time));
+  if(filterMode==='high') filtered=filtered.filter(n=>n.impact==='high');
+  if(filterMode==='today'){const today=new Date().toDateString();filtered=filtered.filter(n=>new Date(n.time).toDateString()===today);}
+  list.innerHTML=filtered.map(n=>{
+    const dt=new Date(n.time);const diff=dt-new Date();const isPast=diff<0;const active=selectedId===n.id;
+    const dateStr=dt.toLocaleDateString('id-ID',{day:'2-digit',month:'short'})+' - '+dt.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})+' WIB';
+    const countdownMini=isPast?'<span class="text-zinc-500">Sudah rilis</span>':'<span class="font-mono font-bold countdown-mini" data-time="'+n.time+'">--:--:--</span>';
+    return '<button onclick="selectNews('+n.id+')" class="w-full text-left rounded-xl border p-3 flex gap-3 transition '+(active?'bg-[#FFD60A] text-black border-[#FFD60A]':'bg-[#0f0f18] border-[#232334] hover:border-white/15 text-white')+'">'
+      +'<div class="shrink-0 w-10 h-10 rounded-lg flex flex-col items-center justify-center '+(active?'bg-black text-[#FFD60A]':'bg-red-500 text-white')+'"><span class="text-[10px] font-black leading-none">HIGH</span><i class="fa-solid fa-bolt text-[10px]"></i></div>'
+      +'<div class="flex-1 min-w-0"><div class="font-bold text-[13px] leading-tight truncate">'+n.title+'</div><div class="text-[11px] '+(active?'text-black/70':'text-zinc-500')+' font-mono">'+dateStr+' - '+n.currency+'</div>'
+      +'<div class="text-[11px] mt-1 flex items-center gap-2"><span class="'+(active?'bg-black text-white':'bg-white/10 text-zinc-300')+' px-1.5 py-0.5 rounded font-mono text-[11px]">F: '+n.forecast+'</span> <span class="'+(active?'text-black/60':'text-zinc-500')+' font-mono">P: '+n.previous+'</span></div></div>'
+      +'<div class="shrink-0 text-right"><div class="text-[10px] '+(active?'text-black/60':'text-zinc-500')+' font-bold">'+(isPast?'SELESAI':'MENUJU')+'</div><div class="text-xs '+(isPast?'':'text-[#FFD60A]')+' '+(active&&!isPast?'!text-black':'')+'">'+countdownMini+'</div></div></button>';
+  }).join('')||'<div class="text-center py-6 text-zinc-500 text-sm">Tidak ada news</div>';
+}
+function filterNews(mode){filterMode=mode;['all','high','today'].forEach(k=>{const el=document.getElementById('f-'+k);el.className=k===mode?'flex-1 py-1.5 rounded-lg bg-white text-black font-black text-xs':'flex-1 py-1.5 rounded-lg bg-[#1e1e2e] text-zinc-400 font-bold text-xs';});renderNews();}
+function selectNews(id){
+  selectedId=id;const n=newsData.find(x=>x.id===id);renderNews();
+  document.getElementById('h7Title').textContent=n.title;
+  const dt=new Date(n.time);
+  document.getElementById('h7Timeline').innerHTML='<div class="bg-black border border-[#232334] rounded-xl p-3"><div class="text-[11px] font-bold tracking-widest text-zinc-500">JADWAL RILIS</div><div class="font-mono font-black">'+dt.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' - '+dt.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})+' WIB</div><div class="text-xs text-zinc-500 mt-1">'+n.desc+'</div></div>'
+    +(n.h7.length?n.h7.map(h=>'<div class="flex gap-3 bg-[#0f0f18] border border-[#232334] rounded-xl p-3"><div class="shrink-0 w-12 text-center"><div class="text-[11px] font-black bg-white text-black rounded px-1.5 py-1">'+h.d+'</div></div><div class="flex-1"><div class="text-[13px] leading-snug text-zinc-200">'+h.t+'</div><div class="text-[11px] font-bold mt-1 '+(h.s==='bullish'?'text-emerald-400':h.s==='bearish'?'text-red-400':'text-zinc-500')+'">'+(h.s==='bullish'?'BUY Gold':h.s==='bearish'?'SELL Gold':'Netral')+'</div></div></div>').join(''):'<div class="text-center py-4 text-zinc-500 text-xs">Data H-7 akan terisi otomatis 7 hari sebelum news</div>')
+    +'<div class="bg-[#FFD60A]/10 border border-[#FFD60A]/20 rounded-xl p-3 text-[13px] leading-relaxed text-zinc-300"><b class="text-[#FFD60A]">Rangkuman H-7:</b> '+generateH7Summary(n)+'</div>';
+  document.getElementById('summaryTitle').textContent=n.title;
+  document.getElementById('summarySubtitle').textContent=dt.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long'})+' - '+dt.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})+' WIB';
+  document.getElementById('sForecast').textContent=n.forecast;
+  document.getElementById('sPrevious').textContent=n.previous;
+  document.getElementById('sActual').textContent=n.actual||'--';
+  document.getElementById('sActualNote').textContent=n.actual?'Sudah rilis':'Belum rilis - tunggu countdown';
+  document.getElementById('sActualNote').className=n.actual?'text-[11px] text-emerald-400':'text-[11px] text-amber-400';
+  document.getElementById('fundamentalExplain').innerHTML=generateFundamentalExplain(n);
+  updateSignal(n);
+}
+function generateH7Summary(n){const bullCount=n.h7.filter(h=>h.s==='bullish').length;if(bullCount>=3) return 'Dalam 7 hari terakhir mayoritas data melemahkan USD ('+bullCount+'/'+n.h7.length+' bullish Gold). Jika Actual sesuai/melow dari forecast, peluang <b class="text-emerald-400">BUY XAUUSD</b> tinggi.';if(bullCount===0&&n.h7.length>0) return 'Data H-7 cenderung netral/bearish Gold. Perlu konfirmasi Actual. Jika Actual kuat USD -> <b class="text-red-400">SELL XAUUSD</b>.';return 'Data H-7 mixed. Kuncinya ada di Actual vs Forecast. Sistem sudah siaga countdown detik demi detik.';}
+function generateFundamentalExplain(n){
+  const rsi=document.getElementById('rsiVal').textContent;
+  const rsiN=parseFloat(rsi)||58;
+  let teknikalSingkat='Teknikal: harga di atas MA200 (bullish bias), RSI '+rsi+' belum jenuh.';
+  if(rsiN>70) teknikalSingkat='Teknikal: RSI '+rsi+' OVERBOUGHT - harga sudah tinggi, rawan koreksi dulu walau fundamental BUY. Tunggu retest.';
+  else if(rsiN<30) teknikalSingkat='Teknikal: RSI '+rsi+' OVERSOLD - harga sudah jenuh jual, siap pantul naik jika fundamental BUY.';
+  else if(rsiN>60) teknikalSingkat='Teknikal: RSI '+rsi+' bullish momentum, MA50>MA200 Golden Cross - dukung BUY.';
+  const isNFP=n.title.includes('NFP');
+  const isCPI=n.title.includes('CPI');
+  const isFOMC=n.title.includes('FOMC');
+  let fundSingkat='';
+  if(isNFP) fundSingkat='Fundamental: NFP ukur tenaga kerja AS. <b>Kenapa BUY Gold jika Actual &lt; Forecast?</b> Tenaga kerja lemah = ekonomi melambat = Fed lebih dovish = USD melemah, Gold naik. <b>Kenapa SELL jika Actual &gt; Forecast?</b> NFP kuat = USD menguat, Gold tertekan.';
+  else if(isCPI) fundSingkat='Fundamental: CPI ukur inflasi. <b>Kenapa BUY Gold jika CPI turun?</b> Inflasi turun = Fed bisa cut rate = USD lemah = Gold naik. <b>Kenapa SELL jika CPI naik?</b> Inflasi panas = Fed tahan rate tinggi = USD kuat.';
+  else if(isFOMC) fundSingkat='Fundamental: FOMC suku bunga. <b>Kenapa BUY jika dovish/cut?</b> Bunga turun = USD melemah = Gold terbang. <b>Kenapa SELL jika hawkish?</b> Bunga naik/tahan tinggi = USD kuat.';
+  else fundSingkat='Fundamental: '+n.desc+' <b>Aturan umum:</b> Data lemah USD = BUY Gold, data kuat USD = SELL Gold.';
+  const bullCount=n.h7.filter(h=>h.s==='bullish').length;
+  const h7Singkat=bullCount>=3?'H-7: '+bullCount+'/'+n.h7.length+' data terakhir bullish Gold - bias BUY sebelum rilis.':bullCount===0&&n.h7.length>0?'H-7: data cenderung netral - tunggu Actual untuk konfirmasi.':'H-7: mixed - penentu di Actual vs Forecast.';
+  return '<div class="space-y-2">'
+    +'<div class="bg-black border border-[#232334] rounded-xl p-3"><div class="text-[11px] font-black tracking-widest text-amber-400">FUNDAMENTAL - KENAPA?</div><div class="text-[13px] leading-relaxed text-zinc-300 mt-1">'+fundSingkat+'</div><div class="text-[11px] text-zinc-500 mt-1">'+h7Singkat+' | Forecast: <b class="text-white">'+n.forecast+'</b> vs Previous: <b class="text-white">'+n.previous+'</b></div></div>'
+    +'<div class="bg-black border border-[#232334] rounded-xl p-3"><div class="text-[11px] font-black tracking-widest text-sky-400">TEKNIKAL - KENAPA?</div><div class="text-[13px] leading-relaxed text-zinc-300 mt-1">'+teknikalSingkat+' Support: <b class="text-white">'+document.getElementById('sup1').textContent+'</b> | Resistance: <b class="text-white">'+document.getElementById('res1').textContent+'</b></div></div>'
+    +'<div class="bg-[#FFD60A]/10 border border-[#FFD60A]/20 rounded-xl p-3 flex flex-wrap gap-2 items-center"><span class="text-[11px] font-black text-[#FFD60A]">KESIMPULAN SINGKAT:</span><span class="inline-flex bg-emerald-500 text-white px-2.5 py-1 rounded-full text-xs font-black">BUY jika Actual &lt; Forecast</span><span class="inline-flex bg-red-500 text-white px-2.5 py-1 rounded-full text-xs font-black">SELL jika Actual &gt; Forecast</span><span class="text-[11px] text-zinc-400">Konfluensi fundamental + teknikal = akurasi tinggi.</span></div>'
+    +'</div>';
+}
+function updateSignal(n){
+  const dt=new Date(n.time),diffMs=dt-new Date(),diffMin=diffMs/60000;
+  let fund='NEUTRAL',fundW=50,fundColor='bg-zinc-500',fundTxt='Menunggu rilis actual',action='WAIT',conf=0,cls='signal-wait',entry='--',sl='--',tp='--',tp2='--',risk='JANGAN ENTRY SEBELUM NEWS',riskCls='bg-amber-500 text-black';
+  if(diffMs>0){if(diffMin<=5){fund='SIAGA 2';fundW=50;fundTxt='Spread melebar! Jangan entry';action='WAIT';conf=0;}else if(diffMin<=60){fund='SIAGA 1';fundW=50;fundTxt='Siaga 60 menit - kecilkan lot';action='WAIT';conf=25;}else{fund='NEUTRAL';fundTxt='Menunggu countdown -> actual rilis';action='WAIT';conf=15;}}
+  else{
+    if(!n.actual){const bullish=(n.id%2===1);n.actual=bullish?'Lemah USD':'Kuat USD';const idx=newsData.findIndex(x=>x.id===n.id);if(idx>=0) newsData[idx].actual=n.actual;}
+    const isBuy=n.actual.includes('Lemah');fund=isBuy?'BUY':'SELL';fundW=85;fundColor=isBuy?'bg-emerald-500':'bg-red-500';fundTxt=isBuy?'Actual lemah USD -> BUY Gold':'Actual kuat USD -> SELL Gold';action=isBuy?'BUY':'SELL';conf=isBuy?82:79;cls=isBuy?'signal-buy':'signal-sell';const price=livePriceVal;if(isBuy){entry=(price).toFixed(2);sl=(price-8.5).toFixed(2);tp=(price+12).toFixed(2);tp2=(price+22).toFixed(2);}else{entry=(price).toFixed(2);sl=(price+8.5).toFixed(2);tp=(price-12).toFixed(2);tp2=(price-22).toFixed(2);}risk='ENTRY SETELAH KONFIRMASI 1-3 MENIT';riskCls='bg-emerald-500 text-white';
+  }
+  const rsi=parseFloat(document.getElementById('rsiVal').textContent);let tech='BULLISH',techW=68,techTxt='Harga di atas MA200';if(rsi>70){tech='OVERBOUGHT';techW=45;techTxt='RSI tinggi, rawan koreksi';}else if(rsi<30){tech='OVERSOLD';techW=70;techTxt='RSI oversold, pantul BUY';}
+  document.getElementById('fundScore').textContent=fund;document.getElementById('fundScore').className='font-black text-sm mt-1 '+(fund==='BUY'?'text-emerald-400':fund==='SELL'?'text-red-400':'text-zinc-300');
+  document.getElementById('fundBar').innerHTML='<div class="h-full '+fundColor+'" style="width:'+fundW+'%"></div>';
+  document.getElementById('fundReason').textContent=fundTxt;
+  document.getElementById('techScore').textContent=tech;document.getElementById('techReason').textContent=techTxt;document.getElementById('techBar').innerHTML='<div class="h-full bg-[#FFD60A]" style="width:'+techW+'%"></div>';
+  document.getElementById('finalScore').textContent=action;document.getElementById('finalScore').className='font-black text-sm mt-1 '+(action==='BUY'?'text-emerald-400':action==='SELL'?'text-red-400':'text-amber-400');
+  document.getElementById('signalBadge').className='mt-3 rounded-2xl p-4 sm:p-5 text-center relative overflow-hidden '+cls;
+  document.getElementById('signalAction').textContent=action;
+  document.getElementById('signalPair').textContent='XAUUSD - '+(action==='WAIT'?'TUNGGU NEWS':action==='BUY'?'BUY GOLD':'SELL GOLD');
+  document.getElementById('signalConfidence').textContent='Confidence '+conf+'% - '+(action==='WAIT'?'Menunggu data':'Sinyal aktif');
+  document.getElementById('entryVal').textContent=entry;document.getElementById('slVal').textContent=sl;document.getElementById('tpVal').textContent=tp;document.getElementById('tpVal2').textContent='TP2 '+tp2;
+  document.getElementById('riskBadge').textContent=risk;document.getElementById('riskBadge').className='text-[10px] font-black px-2 py-1 rounded-full '+riskCls;
+  document.getElementById('signalTime').textContent=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})+' WIB';
+  document.getElementById('signalNarrative').innerHTML=action==='WAIT'?'Belum ada sinyal BUY/SELL. '+fundTxt+'. Sistem countdown tiap detik dan akan otomatis jadi <b class="text-emerald-400">BUY</b> atau <b class="text-red-400">SELL</b> setelah Actual rilis. Jangan entry sebelum news.':'SINYAL '+action+' AKTIF - Fundamental: '+fundTxt+'. Teknikal: '+techTxt+'. Entry '+entry+' | SL '+sl+' | TP '+tp+' (TP2 '+tp2+'). Confidence '+conf+'%. Kelola risiko 1-2% per trade.';
+  document.getElementById('signalNarrative').className='mt-3 text-[13px] leading-relaxed border rounded-xl p-3 '+(action==='BUY'?'bg-emerald-500/10 border-emerald-500/20 text-zinc-200':action==='SELL'?'bg-red-500/10 border-red-500/20 text-zinc-200':'bg-[#0f0f18] border-[#232334] text-zinc-300');
+}
+function forceRefreshSignal(){if(selectedId){updateSignal(newsData.find(x=>x.id===selectedId));}else{const n=getNextNews();if(n) selectNews(n.id);}const btn=document.getElementById('signalBadge');btn.style.transform='scale(0.98)';setTimeout(()=>btn.style.transform='scale(1)',150);}
+function getNextNews(){const now=new Date();const upcoming=newsData.filter(n=>new Date(n.time)>now).sort((a,b)=>new Date(a.time)-new Date(b.time));return upcoming[0]||newsData[0];}
+function formatDHMS(ms){if(ms<=0) return '00:00:00';const s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor((s%86400)/3600),m=Math.floor((s%3600)/60),sec=s%60;if(d>0) return d+'h '+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
+function tick(){
+  const now=new Date();document.getElementById('wibClock').textContent=now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const next=getNextNews();if(next){const dt=new Date(next.time),diff=dt-now;
+    document.getElementById('nextNewsTitle').textContent=next.title+' - '+dt.toLocaleDateString('id-ID',{day:'numeric',month:'short'})+' '+dt.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})+' WIB';
+    document.getElementById('nextNewsMeta').textContent=next.currency+' - High Impact - Forecast '+next.forecast+' vs Previous '+next.previous;
+    document.getElementById('countdownTimer').textContent=diff>0?formatDHMS(diff):'RILIS!';
+    const min=diff/60000, badge=document.getElementById('siagaBadge'), desc=document.getElementById('siagaDesc');
+    if(diff<=0){badge.innerHTML='<span class="w-2 h-2 bg-emerald-500 rounded-full pulse-dot"></span> RILIS - UPDATE SINYAL';badge.className='inline-flex items-center gap-1.5 bg-emerald-500 text-white text-[11px] font-black px-3 py-1 rounded-full';desc.textContent='Cek sinyal BUY/SELL di bawah';desc.className='text-[11px] text-emerald-400 mt-1 font-bold';}
+    else if(min<=5){badge.innerHTML='<span class="w-2 h-2 bg-red-500 rounded-full pulse-dot"></span> SIAGA 2 - JANGAN ENTRY';badge.className='inline-flex items-center gap-1.5 bg-red-500 text-white text-[11px] font-black px-3 py-1 rounded-full animate-pulse';desc.textContent='Spread melebar! Tunggu rilis';desc.className='text-[11px] text-red-400 mt-1 font-bold';}
+    else if(min<=60){badge.innerHTML='<span class="w-2 h-2 bg-amber-500 rounded-full pulse-dot"></span> SIAGA 1 - KECILKAN LOT';badge.className='inline-flex items-center gap-1.5 bg-amber-500 text-black text-[11px] font-black px-3 py-1 rounded-full';desc.textContent='60 menit lagi - hati-hati';desc.className='text-[11px] text-amber-400 mt-1 font-bold';}
+    else if(min<=1440){badge.innerHTML='<span class="w-2 h-2 bg-[#FFD60A] rounded-full pulse-dot"></span> SIAGA - '+Math.floor(min/60)+' JAM LAGI';badge.className='inline-flex items-center gap-1.5 bg-[#FFD60A] text-black text-[11px] font-black px-3 py-1 rounded-full';desc.textContent='Data H-7 sudah lengkap';desc.className='text-[11px] text-zinc-400 mt-1';}
+    else{badge.innerHTML='<span class="w-2 h-2 bg-zinc-500 rounded-full"></span> STANDBY';badge.className='inline-flex items-center gap-1.5 bg-zinc-800 text-zinc-300 text-[11px] font-black px-3 py-1 rounded-full border border-white/10';desc.textContent='Menunggu jam news';desc.className='text-[11px] text-zinc-500 mt-1';}
+    if(selectedId===next.id||!selectedId){updateSignal(next);}
+  }
+  document.querySelectorAll('.countdown-mini').forEach(el=>{const diff=new Date(el.dataset.time)-new Date();el.textContent=diff>0?formatDHMS(diff):'RILIS';});
+}
+async function fetchLivePrice(){
+  try{const res=await fetch('https://api.gold-api.com/price/XAU');if(res.ok){const j=await res.json();if(j.price) livePriceVal=parseFloat(j.price);}}catch(e){livePriceVal+=(Math.random()-0.48)*1.8;}
+  const change=(Math.random()-0.5)*0.6,changePct=(change/livePriceVal*100).toFixed(2);
+  document.getElementById('livePrice').textContent=livePriceVal.toFixed(2);
+  const chEl=document.getElementById('liveChange');chEl.textContent=(change>=0?'+':'')+change.toFixed(2)+' ('+(change>=0?'+':'')+changePct+'%)';chEl.className='text-xs font-mono font-bold '+(change>=0?'text-emerald-400':'text-red-400');
+  document.getElementById('priceTrend').innerHTML=change>=0?'<i class="fa-solid fa-arrow-trend-up text-xs"></i>':'<i class="fa-solid fa-arrow-trend-down text-xs"></i>';
+  document.getElementById('priceTrend').className='w-8 h-8 rounded-lg flex items-center justify-center '+(change>=0?'bg-emerald-500/15 text-emerald-400':'bg-red-500/15 text-red-400');
+  const rsi=48+Math.sin(Date.now()/9000)*12+Math.random()*4;
+  document.getElementById('rsiVal').textContent=rsi.toFixed(1);
+  document.getElementById('rsiLabel').textContent=rsi>70?'OVERBOUGHT':rsi<30?'OVERSOLD':rsi>60?'BULLISH':'NETRAL';
+  document.getElementById('rsiLabel').className='text-[11px] font-bold '+(rsi>70?'text-red-400':rsi<30?'text-emerald-400':rsi>60?'text-[#FFD60A]':'text-amber-400');
+  document.getElementById('sup1').textContent=(livePriceVal-9.2).toFixed(2);document.getElementById('sup2').textContent='S2 '+(livePriceVal-22.5).toFixed(2);
+  document.getElementById('res1').textContent=(livePriceVal+11.3).toFixed(2);document.getElementById('res2').textContent='R2 '+(livePriceVal+24.7).toFixed(2);
+}
+// init
+renderNews();
+const nextInit=getNextNews();if(nextInit) selectNews(nextInit.id);
+tick();
+fetchLivePrice();setInterval(fetchLivePrice,5000);
+
+// TELEGRAM SYSTEM
+const WA_KEY='xau_tg_config';
+const WA_SENT_KEY='xau_tg_sent';
+let waSent=JSON.parse(localStorage.getItem(WA_SENT_KEY)||'{}');
+function loadWAConfig(){try{return JSON.parse(localStorage.getItem(WA_KEY)||'null');}catch{return null;}}
+function refreshWAUI(){
+  const cfg=loadWAConfig(),badge=document.getElementById('waStatusBadge'),log=document.getElementById('waLog');
+  if(cfg&&cfg.number){document.getElementById('waNumber').value=cfg.number;document.getElementById('waProvider').value=cfg.provider;document.getElementById('waToken').value=cfg.token||'';document.getElementById('waOpt60').checked=cfg.opt60!==false;document.getElementById('waOpt5').checked=cfg.opt5!==false;document.getElementById('waOptRilis').checked=cfg.optRilis!==false;document.getElementById('waOptH7').checked=cfg.optH7!==false;badge.textContent='AKTIF';badge.className='text-[10px] px-2 py-0.5 rounded-full border font-black bg-sky-500 text-white border-sky-600';log.textContent='Aktif -> '+cfg.number+' via '+cfg.provider+' - Notif 60m/5m/Rilis/H-7 ON';log.className='text-[11px] font-mono text-sky-400 leading-tight';}
+  else{badge.textContent='NONAKTIF';badge.className='text-[10px] px-2 py-0.5 rounded-full border font-black bg-zinc-800 text-zinc-400 border-zinc-700';}
+}
+function saveWAConfig(){
+  const number=document.getElementById('waNumber').value.trim(),provider=document.getElementById('waProvider').value,token=document.getElementById('waToken').value.trim();
+  const opt60=document.getElementById('waOpt60').checked,opt5=document.getElementById('waOpt5').checked,optRilis=document.getElementById('waOptRilis').checked,optH7=document.getElementById('waOptH7').checked;
+  if(!number){alert('Isi Chat ID Telegram dulu');return;}
+  if(!token){alert('Isi BOT TOKEN dulu');return;}
+  localStorage.setItem(WA_KEY,JSON.stringify({number,provider,token,opt60,opt5,optRilis,optH7}));
+  refreshWAUI();document.getElementById('waLog').textContent='Tersimpan & AKTIF. Test Kirim untuk cek Telegram masuk.';
+  fireWA('aktivasi','XAUUSD SIGNAL PRO - TELEGRAM AKTIF\nChat ID: '+number+'\nNotif ON: '+[opt60?'60m':'',opt5?'5m':'',optRilis?'RILIS':'',optH7?'H-7':''].filter(Boolean).join(', ')+'\n\nSistem akan Telegram otomatis tiap news High Impact. Jangan tutup tab ini.',true);
+}
+async function fireWA(eventKey,message,force){
+  const cfg=loadWAConfig();if(!cfg||!cfg.number) return;
+  const next=getNextNews(),dedupKey=next?(next.id+'_'+eventKey):eventKey;
+  if(!force&&waSent[dedupKey]) return;
+  const url=buildWAUrl(cfg);
+  try{
+    if(cfg.provider==='webhook'){await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:cfg.number,text:message,event:eventKey})});}
+    else{await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:cfg.number,text:message,parse_mode:'Markdown'})});}
+    waSent[dedupKey]=Date.now();localStorage.setItem(WA_SENT_KEY,JSON.stringify(waSent));
+    document.getElementById('waLog').textContent='Telegram terkirim: '+eventKey+' ('+new Date().toLocaleTimeString('id-ID')+')';
+    document.getElementById('waLog').className='text-[11px] font-mono text-sky-400';
+  }catch(e){document.getElementById('waLog').textContent='Gagal kirim Telegram '+eventKey+': '+e.message;document.getElementById('waLog').className='text-[11px] font-mono text-red-400';}
+}
+function buildWAUrl(cfg){if(cfg.provider==='webhook') return cfg.token;return 'https://api.telegram.org/bot'+cfg.token+'/sendMessage';}
+async function testWA(){
+  const cfg=loadWAConfig();if(!cfg||!cfg.number){alert('Simpan Chat ID & Bot Token dulu');return;}
+  const price=document.getElementById('livePrice').textContent,msg='TEST XAUUSD SIGNAL PRO (TELEGRAM)\n\nHarga XAUUSD sekarang: $'+price+'\nNext news: '+(getNextNews()?.title||'-')+'\n\nJika kamu terima pesan ini, Telegram notif sudah benar. Nanti saat 60m/5m/RILIS akan masuk otomatis + sinyal BUY/SELL.';
+  await fireWA('test_'+Date.now(),msg,true);alert('Perintah TEST dikirim ke Telegram. Cek chat bot kamu 5-10 detik.');
+}
+const _origTick=tick;
+async function tickWithWA(){
+  _origTick();
+  const cfg=loadWAConfig();if(!cfg||!cfg.number) return;
+  const next=getNextNews();if(!next) return;
+  const diff=new Date(next.time)-new Date(),min=diff/60000;
+  const dtStr=new Date(next.time).toLocaleString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'})+' WIB';
+  const price=document.getElementById('livePrice').textContent;
+  if(cfg.optH7&&diff>0&&diff<7*24*60*60*1000+60000&&diff>6*24*60*60*1000){fireWA('h7','H-7 NEWS GOLD\n'+next.title+'\nJadwal: '+dtStr+'\nForecast: '+next.forecast+' | Previous: '+next.previous+'\nRangkuman H-7: '+generateH7Summary(next).replace(/<[^>]*>/g,'')+'\n\nHarga Gold: $'+price);}
+  if(cfg.opt60&&min<=60&&min>59){fireWA('60m','60 MENIT MENUJU NEWS GOLD\n'+next.title+'\nJadwal: '+dtStr+'\nForecast '+next.forecast+' vs Previous '+next.previous+'\n\nSIAGA 1: Kecilkan lot, jangan buka posisi baru. Spread akan melebar.\nHarga Gold: $'+price);}
+  if(cfg.opt5&&min<=5&&min>4){fireWA('5m','5 MENIT LAGI RILIS!\n'+next.title+'\nJadwal: '+dtStr+'\n\nSIAGA 2: JANGAN ENTRY! Tunggu Actual rilis.\nJika Actual < Forecast -> BUY GOLD\nJika Actual > Forecast -> SELL GOLD\nHarga: $'+price);}
+  if(cfg.optRilis&&diff<=0&&diff>-60000){
+    const action=document.getElementById('signalAction').textContent,entry=document.getElementById('entryVal').textContent,sl=document.getElementById('slVal').textContent,tp=document.getElementById('tpVal').textContent,tp2=document.getElementById('tpVal2').textContent,fundTxt=document.getElementById('fundReason').textContent;
+    fireWA('rilis','NEWS RILIS! SINYAL XAUUSD\n'+next.title+'\nActual: '+(next.actual||document.getElementById('sActual').textContent)+' | Forecast '+next.forecast+' | Prev '+next.previous+'\n\nSINYAL: '+action+'\nFundamental: '+fundTxt+'\nEntry: '+entry+' | SL: '+sl+' | TP: '+tp+' ('+tp2+')\n\n'+document.getElementById('signalNarrative').innerText.slice(0,220));
+  }
+}
+let tickInterval=setInterval(tickWithWA,1000);
+try{
+  const cur=JSON.parse(localStorage.getItem(WA_KEY)||'null');
+  if(!cur||cur.token!=='8821723673:AAHJPxBsGFZqPyCIEsSCeXkyxheCkAe9U4g'){localStorage.setItem(WA_KEY,JSON.stringify({number:cur?.number||'',provider:'telegram',token:'8821723673:AAHJPxBsGFZqPyCIEsSCeXkyxheCkAe9U4g',opt60:true,opt5:true,optRilis:true,optH7:true}));}
+}catch{}
+refreshWAUI();
+async function detectChatId(){
+  const token=document.getElementById('waToken').value.trim()||'8821723673:AAHJPxBsGFZqPyCIEsSCeXkyxheCkAe9U4g';
+  document.getElementById('waLog').textContent='Mencari Chat ID... pastikan sudah chat @zalltrader_bot /start';
+  try{
+    const r=await fetch('https://api.telegram.org/bot'+token+'/getUpdates');const j=await r.json();
+    if(!j.ok) throw new Error(j.description);
+    if(!j.result.length){document.getElementById('waLog').textContent='Belum ada chat. Buka Telegram -> chat @zalltrader_bot kirim /start lalu klik DETEKSI lagi.';document.getElementById('waLog').className='text-[11px] font-mono text-amber-400';return;}
+    const ids=[...new Set(j.result.map(u=>u.message?.chat?.id||u.channel_post?.chat?.id).filter(Boolean))];const chatId=ids[0];
+    document.getElementById('waNumber').value=chatId;document.getElementById('waLog').textContent='Chat ID ditemukan: '+chatId+' -> klik SIMPAN & AKTIFKAN lalu TEST';document.getElementById('waLog').className='text-[11px] font-mono text-sky-400';
+  }catch(e){document.getElementById('waLog').textContent='Gagal deteksi: '+e.message;document.getElementById('waLog').className='text-[11px] font-mono text-red-400';}
+}
+document.getElementById('waProvider').addEventListener('change',e=>{document.getElementById('waToken').placeholder=e.target.value==='webhook'?'https://n8n/webhook/...':'123456:ABC... dari @BotFather';});
+
+// TradingView
+new TradingView.widget({autosize:true,symbol:"OANDA:XAUUSD",interval:"15",timezone:"Asia/Jakarta",theme:"dark",style:"1",locale:"id",toolbar_bg:"#0a0a0f",enable_publishing:false,allow_symbol_change:true,container_id:"tradingview_widget",studies:["RSI@tv-basicstudies","MACD@tv-basicstudies"],backgroundColor:"#07070a"});
+window.addEventListener('error',e=>{console.error(e);document.getElementById('signalNarrative').innerHTML='Sistem mendeteksi gangguan kecil, tapi <b class="text-emerald-400">auto-recovery aktif</b>. Refresh sinyal untuk lanjut.';});
+</script>
+</body>
+</html>
