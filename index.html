@@ -181,8 +181,7 @@ tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],mono:['J
         </div>
         <div id="fundamentalExplain" class="bg-[#0f0f18] border border-[#232334] rounded-xl p-3 text-[13px] leading-relaxed text-zinc-300">Penjelasan fundamental & teknikal akan muncul di sini untuk setiap news. Sistem membaca apakah data cenderung <b class="text-emerald-400">BUY GOLD</b> atau <b class="text-red-400">SELL GOLD</b>.</div>
         <div class="grid sm:grid-cols-2 gap-2">
-          <div class="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-3"><div class="text-xs font-black text-emerald-400">JIKA DATA LEMAH USD</div><div class="text-[13px] text-zinc-300 mt-1">Actual &lt; Forecast - USD melemah - <b class="text-emerald-400">BUY XAUUSD</b></div></div>
-          <div class="rounded-xl border border-red-500/20 bg-red-500/10 p-3"><div class="text-xs font-black text-red-400">JIKA DATA KUAT USD</div><div class="text-[13px] text-zinc-300 mt-1">Actual &gt; Forecast - USD menguat - <b class="text-red-400">SELL XAUUSD</b></div></div>
+          <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-3"><div class="text-[10px] font-black tracking-widest text-zinc-500">EDUKASI - BUKAN SINYAL</div><div class="text-[12px] text-zinc-400 mt-1">Actual &lt; Forecast = USD lemah = <b class="text-emerald-400">BUY</b> • Actual &gt; Forecast = USD kuat = <b class="text-red-400">SELL</b> — sinyal final hanya 1 (BUY <b>ATAU</b> SELL) saat RILIS di atas.</div></div>
         </div>
       </div>
     </div>
@@ -402,10 +401,10 @@ async function tickWithWA(){
   const price=document.getElementById('livePrice').textContent;
   if(cfg.optH7&&diff>0&&diff<7*24*60*60*1000+60000&&diff>6*24*60*60*1000){fireWA('h7','H-7 NEWS GOLD\n'+next.title+'\nJadwal: '+dtStr+'\nForecast: '+next.forecast+' | Previous: '+next.previous+'\nRangkuman H-7: '+generateH7Summary(next).replace(/<[^>]*>/g,'')+'\n\nHarga Gold: $'+price);}
   if(cfg.opt60&&min<=60&&min>59){fireWA('60m','60 MENIT MENUJU NEWS GOLD\n'+next.title+'\nJadwal: '+dtStr+'\nForecast '+next.forecast+' vs Previous '+next.previous+'\n\nSIAGA 1: Kecilkan lot, jangan buka posisi baru. Spread akan melebar.\nHarga Gold: $'+price);}
-  if(cfg.opt5&&min<=5&&min>4){fireWA('5m','5 MENIT LAGI RILIS!\n'+next.title+'\nJadwal: '+dtStr+'\n\nSIAGA 2: JANGAN ENTRY! Tunggu Actual rilis.\nJika Actual < Forecast -> BUY GOLD\nJika Actual > Forecast -> SELL GOLD\nHarga: $'+price);}
+  if(cfg.opt5&&min<=5&&min>4){fireWA('5m','5 MENIT LAGI RILIS!\n'+next.title+'\nJadwal: '+dtStr+'\n\nSIAGA 2: JANGAN ENTRY DULU! Sinyal BUY atau SELL baru keluar saat Actual rilis (1 pilihan jelas). Tunggu notif RILIS berikutnya.\nHarga: $'+price);}
   if(cfg.optRilis&&diff<=0&&diff>-60000){
     const action=document.getElementById('signalAction').textContent,entry=document.getElementById('entryVal').textContent,sl=document.getElementById('slVal').textContent,tp=document.getElementById('tpVal').textContent,tp2=document.getElementById('tpVal2').textContent,fundTxt=document.getElementById('fundReason').textContent;
-    fireWA('rilis','NEWS RILIS! SINYAL XAUUSD\n'+next.title+'\nActual: '+(next.actual||document.getElementById('sActual').textContent)+' | Forecast '+next.forecast+' | Prev '+next.previous+'\n\nSINYAL: '+action+'\nFundamental: '+fundTxt+'\nEntry: '+entry+' | SL: '+sl+' | TP: '+tp+' ('+tp2+')\n\n'+document.getElementById('signalNarrative').innerText.slice(0,220));
+    fireWA('rilis','SINYAL FINAL - PILIH SATU\n'+next.title+'\nActual: '+(next.actual||document.getElementById('sActual').textContent)+' | Forecast '+next.forecast+' | Prev '+next.previous+'\n\nSINYAL: '+action+'\nFundamental: '+fundTxt+'\nEntry: '+entry+' | SL: '+sl+' | TP: '+tp+' ('+tp2+')\n\n'+document.getElementById('signalNarrative').innerText.slice(0,220));
   }
 }
 let tickInterval=setInterval(tickWithWA,1000);

@@ -18,8 +18,8 @@ export default async function handler(req, res) {
     const diffMin=(t-now)/60000;
     let msg=null,tag=null;
     if(diffMin>59 && diffMin<=60){tag='60m';msg=`⏰ 60 MENIT MENUJU NEWS GOLD\n${n.title}\nJadwal: ${new Date(n.time).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})} WIB\nForecast ${n.forecast} vs Previous ${n.previous}\n\nSIAGA 1: Kecilkan lot.\nhttps://${req.headers.host}`;}
-    else if(diffMin>4 && diffMin<=5){tag='5m';msg=`🚨 5 MENIT LAGI RILIS!\n${n.title}\n\nSIAGA 2: JANGAN ENTRY!\nJika Actual < Forecast → BUY GOLD\nJika Actual > Forecast → SELL GOLD`;}
-    else if(diffMin>-1 && diffMin<=0){tag='rilis';msg=`💥 NEWS RILIS! CEK SINYAL\n${n.title}\nForecast ${n.forecast} | Prev ${n.previous}\n\nBuka web untuk BUY/SELL + SL/TP\nhttps://${req.headers.host}`;}
+    else if(diffMin>4 && diffMin<=5){tag='5m';msg=`🚨 5 MENIT LAGI RILIS!\n${n.title}\n\nSIAGA 2: JANGAN ENTRY DULU! Sinyal BUY atau SELL (1 pilihan) baru keluar saat RILIS. Tunggu notif berikutnya.`;}
+    else if(diffMin>-1 && diffMin<=0){tag='rilis';msg=`💥 SINYAL FINAL - PILIH SATU\n${n.title}\nForecast ${n.forecast} | Prev ${n.previous}\n\nSinyal di Telegram ini hanya 1: BUY atau SELL (tidak dua-duanya). Entry/SL/TP lihat di web.\nhttps://${req.headers.host}`;}
     if(msg) for(const cid of chatIds){
       try{const r=await fetch(`https://api.telegram.org/bot${token}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:cid,text:msg})});const j=await r.json();sent.push({news:n.title,tag,ok:j.ok});}catch(e){sent.push({news:n.title,tag,ok:false})}
     }
