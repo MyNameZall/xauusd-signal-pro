@@ -1,0 +1,15 @@
+name: XAUUSD Telegram Cron 24jam
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # tiap 5 menit, jalan 24 jam tanpa laptop
+  workflow_dispatch:        # bisa trigger manual juga
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit Vercel cron-external
+        run: |
+          echo "Hitting cron-external..."
+          curl -s "https://xauusd-signal-pro.vercel.app/api/cron-external" | head -c 1000
+          echo ""
+          echo "Done"
